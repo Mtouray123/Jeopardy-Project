@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Orbitron&display=swap');
+
+body {
+   margin:0;
+   padding:0;
+   background-color: cornflowerblue;
+   color: white;
+   display:flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   font-family: 'Caveat', cursive;
+   font-size: 28px;
+}
+
+#game {
+   background-color: cornflowerblue;
+   display: flex;
+   gap: 25px;
+   
+
+}
+
+#page-header{
+   text-decoration: underline;
+   
+}
+
+.card {
+   width: 160px;
+   height:120px;
+   background-color: darkblue;
+   border-left: solid darkblue;
+   border-right: solid darkblue;
+   border-top: solid darkblue;
+   border-bottom: solid darkblue;
+   text-align: center;
+   font-size: 100px;
+   margin: 5px;
+   padding:10px;
+   line-height: 120px;
+}
+
+.card-back{
+   width: 160px;
+   height:120px;
+   font-size: 100px;
+   margin: 5px;
+   padding:10px;
+   line-height: 120px;
+   display:none;
+
+
+}
