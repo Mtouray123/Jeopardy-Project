@@ -35,10 +35,13 @@ body {
    border-top: solid darkblue;
    border-bottom: solid darkblue;
    text-align: center;
-   font-size: 100px;
+   font-size: 14px;
    margin: 5px;
    padding:10px;
-   line-height: 120px;
+   line-height: 20px;
+   position: relative;
+   transform-style: preserve-3d;
+   transition: all 0.5s ease;
 }
 
 .card-back{
@@ -51,4 +54,20 @@ body {
    display:none;
 
 
+}
+
+.flip {
+   transform: rotateY(180deg);
+}
+
+.front {
+   position: absolute;
+   backface-visibility: hidden;
+}
+.back {
+   position: absolute;
+   backface-visibility: hidden;
+   transform: rotateY(180deg);
+   text-align: center;
+   margin-top: 0;
 }

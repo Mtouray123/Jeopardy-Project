@@ -31,6 +31,7 @@ const jeopardyCats = [
         genre: "History",
         questionsArr: [
             {
+                id: 0,
                 question: "Where was Ghengis Khan Born",
                 // answer: document.createElement('form')
                 answers:['Khazakstan', 'Mongolia'],
@@ -39,6 +40,7 @@ const jeopardyCats = [
                 
             },
             {
+                id: 1,
                 question:"How old was Alexander the Great when he passed?",
                 // answer: document.createElement('form')
                 answers:['28', '32'],
@@ -47,6 +49,7 @@ const jeopardyCats = [
                 
             },
             {
+                id: 2,
                 question:"What was the name of Mao Zedong's plan to industrialize China?",
                 // answer: document.createElement('form')
                 answers:['Great Leap Forward', 'China Rising'],
@@ -59,6 +62,7 @@ const jeopardyCats = [
         genre:"Programming",
         questionsArr: [
             {
+                id: 3,
                 question: "Which is safer innerText or innerHTML?",
                 // answer: document.createElement('form')
                 answers:['innerHTML', 'innerText'],
@@ -66,6 +70,7 @@ const jeopardyCats = [
                 level:'Beginner'
             },
             {
+                id: 4,
                 question: "What is the name of the person who invented the language JavaScript?",
                 // answer: document.createElement('form')
                 answers:[],
@@ -73,6 +78,7 @@ const jeopardyCats = [
                 level: 'Intermediate'
             },
             {
+                id: 5,
                 question: "When was GitHub founded?",
                 // answer: document.createElement('form')
                 answers:['2008', '2012'],
@@ -85,6 +91,7 @@ const jeopardyCats = [
         genre: "Culture",
         questionsArr: [
             {
+                id: 6,
                 question: "In what city was Michael Jackson born?",
                 // answer: document.createElement('form')
                 answers:['Detroit, MIchigan', 'Gary,Indiana'],
@@ -92,6 +99,7 @@ const jeopardyCats = [
                 level: 'Beginner'
             },
             {
+                id: 7,
                 question: "What year was 1984 published by George Orwell?",
                 // answer: document.createElement('form')
                 answers:['1984', '1949'],
@@ -99,6 +107,7 @@ const jeopardyCats = [
                 level:'Intermediate'
             },
             {
+                id: 8,
                 question:"Who is on the Twenty Dollar Bill?",
                 // answer: document.createElement('form')
                 answers:['Benajmin Franklin', 'Andrew Jackson'],
@@ -112,6 +121,7 @@ const jeopardyCats = [
         genre: "Science",
         questionsArr:[
             {
+                id: 9,
                 question:"Name at least one main layer of the atmosphere.",
                 // answer:document.createElement('form')
                 answers:['Troposphere', ''],
@@ -119,6 +129,7 @@ const jeopardyCats = [
                 level: 'Beginner'
             },
             {
+                id: 10,
                 question:"How many elements are in the periodic table?",
                 // answer: document.createElement('form')
                 answers:[],
@@ -126,6 +137,7 @@ const jeopardyCats = [
                 level: 'Intermediate'
             },
             {
+                id: 11,
                 question:"How old is Earth? (According to 'science')",
                 // answer: document.createElement('form')
                 answers:[],
@@ -136,6 +148,18 @@ const jeopardyCats = [
         ]
     }
 ]
+
+// function to loop through questions and return based on matching ids
+function getQuestion(id) {
+    for (let i = 0; i < jeopardyCats.length; i++) {
+      console.log(jeopardyCats[i].questionsArr);
+      for (let j = 0; j < jeopardyCats[i].questionsArr.length; j++) {
+        if (jeopardyCats[i].questionsArr[j].id == id)
+          return jeopardyCats[i].questionsArr[j];
+      }
+    }
+  }
+
 // function to loop through the jeopardy category
 function addCategory(category){
     // created a new div and named it column to store the columns
@@ -158,34 +182,51 @@ function addCategory(category){
     category.questionsArr.forEach(question => {
     const card = document.createElement('div')
     card.classList.add('card')
-    column.append(card)
+    const p1 = document.createElement('p');
+    p1.classList.add("front")
+    const p2 = document.createElement('p');
+    p2.textContent = question.question
+    p2.classList.add("back")
+    
     // assigning numbers to back of cards
     if(question.level === 'Beginner'){
-        card.innerText = '100';
+        p1.innerText = '100';
     }
     if(question.level === 'Intermediate'){
-        card.innerText = '200';
+        p1.innerText = '200';
     }
     if(question.level === 'Advance'){
-        card.innerText = '300';
+        p1.innerText = '300';
     }
-
+    card.appendChild(p1)
+    card.appendChild(p2)
+    column.append(card)
 })
 
 };
+// appending questions to the back of card
+console.log(jeopardyCats);
 
-jeopardyCats.forEach(category => addCategory(category))
+
+jeopardyCats.forEach((category) => addCategory(category));
+console.log(jeopardyCats);
 // creating flips
-const flipping = document.querySelectorAll('.card')
-function flipCard() {
-    this.classList.toggle('flip')
-    console.log(this)
-    flipping.setAttribute('data-question', jeopardyCats.questionsArr[0].question)
-    flipping.setAttribute('data-answer-1', jeopardyCats.questionsArr[1].asnwer[0])
-    flipping.setAttribute('data-answer-2', jeopardyCats.questionsArr[1])
-    flipping.setAttribute('data-correct', jeopardyCats.questionsArr.correct)
-    flipping.setAttribute('data-value', card.getInnerText())
-}
-console.log(flipping)
+const flipping = document.querySelectorAll(".card");
 
-flipping.forEach(card => card.addEventListener('click', flipCard));
+function flipCard(event) {
+  this.classList.toggle("flip");
+  console.log(this);
+  // console.log(jeopardyCats.questionsArr[0]);
+  let id = event.target.getAttribute("data-id");
+  console.log(id);
+  let question = getQuestion(id);
+  console.log(question);
+
+  event.target.setAttribute("data-question", question.question);
+  event.target.setAttribute("data-answers", question.answers);
+  event.target.setAttribute("data-correct-answer", question.correct);
+  
+}
+console.log(flipping);
+
+flipping.forEach((card) => card.addEventListener("click", flipCard));
