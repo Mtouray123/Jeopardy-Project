@@ -214,13 +214,13 @@ console.log(jeopardyCats);
 const flipping = document.querySelectorAll(".card");
 
 function flipCard(event) {
-  this.classList.toggle("flip");
-  console.log(this);
-  // console.log(jeopardyCats.questionsArr[0]);
-  let id = event.target.getAttribute("data-id");
-  console.log(id);
-  let question = getQuestion(id);
-  console.log(question);
+    this.classList.toggle("flip");
+    console.log(this);
+    // console.log(jeopardyCats.questionsArr[0]);
+    let id = event.target.getAttribute("data-id");
+    console.log(id);
+    let question = getQuestion(id);
+    console.log(question);
 
   event.target.setAttribute("data-question", question.question);
   event.target.setAttribute("data-answers", question.answers);
@@ -228,5 +228,27 @@ function flipCard(event) {
   
 }
 console.log(flipping);
+
+// const button = document.querySelectorAll(".button");
+
+// function buttonCard(id) {
+//     for (let i = 0; i < jeopardyCats.length; i++) {
+//         console.log(jeopardyCats[i].questionsArr.answers)
+//     }
+// }
+
+// function buttonClick () {
+//     // this.innerText = ""
+//     const textDisplay = document.createElement('div')
+//     textDisplay.classList.add('card-text')
+//     textDisplay.innerHTML = this.getAttribute('data-question')
+//     const firstButton = document.createElement('button')
+//     const secondButton = document.createElement('button')
+//     firstButton.classList.add('first-button')
+//     secondButton.classList.add('second-button')
+//     firstButton.innerHTML = this.getAttribute('data-answers')
+//     secondButton.innerHTML = this.getAttribute('data-answers')
+//     this.append(textDisplay, firstButton, secondButton)
+// }
 
 flipping.forEach((card) => card.addEventListener("click", flipCard));
