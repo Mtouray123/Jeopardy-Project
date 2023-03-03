@@ -23,7 +23,6 @@ body {
 
 #page-header{
    text-decoration: underline;
-   
 }
 
 .card {
@@ -52,6 +51,8 @@ body {
    padding:10px;
    line-height: 120px;
    display:none;
+   word-wrap: break-word;
+   
 
 
 }
@@ -63,6 +64,9 @@ body {
 .front {
    position: absolute;
    backface-visibility: hidden;
+   font-size: 50px;
+   text-align: center;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .back {
    position: absolute;
@@ -70,4 +74,40 @@ body {
    transform: rotateY(180deg);
    text-align: center;
    margin-top: 0;
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: column;
+   word-wrap: break-word;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.button-1 {
+   position: absolute;
+   backface-visibility: hidden;
+   /* transform: rotateY(180deg); */
+   text-align: center;
+   /* margin-top: 60px; */
+   margin-bottom: 20px;
+   
+   display: block;
+   /* display: inline-flexbox; */
+   justify-content: space-between;
+   flex-direction: column;
+   
+   /* margin-bottom: 75px; */
+}
+
+.button-2 {
+   position: absolute;
+   backface-visibility: hidden;
+   /* transform: rotateY(180deg); */
+   text-align: center;
+   margin-top: 40px;
+   display: block;
+   /* display: inline-flexbox; */
+   justify-content: space-between;
+   flex-direction: column;
+   word-wrap: break-word;
+   
+   /* margin-bottom: 75px; */
 }
