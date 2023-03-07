@@ -28,13 +28,13 @@ function teamSwitch() {
   playerSpan.innerText = isPlayer1 ? "player1" : "player2"
 
 }
-// large array storing all questions genres and answers
+// large array storing all questions, genres and answers
 const jeopardyCats = [
   {
     genre: "History",
     questionsArr: [
       {
-        // index id stored in every object for looping through
+        // stored index id in every object to effectively loop through the data to place within our cards
         id: 0,
         question: "After more than 150 years, he still remains the tallest US President ever",
         correct: "Abraham Lincoln",
@@ -62,16 +62,15 @@ const jeopardyCats = [
     questionsArr: [
       {
         id: 3,
-        question: "Used to store information to be referenced and manipulated in computer program",
-        correct: "Variable",
-        level: "Beginner",
+        question: "Cloud based service that helps developers store and manage their code",
+        correct: "GitHub",
+        level: "Intermediate",
         score: 100
       },
       {
         id: 4,
-        question:
-          "Cloud based service that helps developers store and manage their code",
-        correct: "GitHub",
+        question: "Used to store information to be referenced and manipulated in computer program",
+        correct: "Variable",
         level: "Intermediate",
         score: 200
       },
@@ -91,21 +90,18 @@ const jeopardyCats = [
         id: 6,
         question: "Born in Gary Indiana, this mega star is widely regarded as the King of Pop",
         correct: "Michael Jackson",
-        level: "Beginner",
         score: 100
       },
       {
         id: 7,
         question: "Seventh President of the United States and image printed on the twenty dollar bill",
         correct: "Andrew Jackson",
-        level: "Intermediate",
         score: 200
       },
       {
         id: 8,
-        question: "Who is on the Twenty Dollar Bill?",
-        correct: "Andrew Jackson",
-        level: "Advance",
+        question: "This 1939 epic historical romance film was the highest grossing film adjusted with inflation ",
+        correct: "Gone with the Wind",
         score: 300
       },
     ],
@@ -117,21 +113,18 @@ const jeopardyCats = [
         id: 9,
         question: "Made of layers of gases that surrounds a planet or celestial body.",
         correct: "Atmosphere",
-        level: "Beginner",
         score: 100
       },
       {
         id: 10,
-        question: "The amount of elements are found within the periodic table?",
-        correct: "118",
-        level: "Intermediate",
+        question: "Self-replicating material that is present in nearly all living organisms",
+        correct: "DNA",
         score: 200
       },
       {
         id: 11,
-        question: "Self-replicating material that is present in nearly all living organisms",
-        correct: "DNA",
-        level: "Advance",
+        question: "The amount of elements are found within the periodic table?",
+        correct: "118",
         score: 300
       },
     ],
@@ -165,6 +158,7 @@ function addCategory(category) {
   game.append(column);
   // creating card faces, card backs, columns, questions, and appending
   // Loops through questions within the categories
+
   category.questionsArr.forEach((question, index) => {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -264,11 +258,9 @@ function answerQuestion(id) {
 }
 // function used to determine if the player has reached score cap
 function winState() {
-  if (p1Score >= 1200) {
+  if (p1Score >= 1000) {
     alert('Player 1 Wins!!')
-  } else if (p2Score >= 1200) {
+  } else if (p2Score >= 1000) {
     alert('Player 2 Wins!!')
   }
 }
-console.log(flipping);
-// adding onclick event to all cards and using flipCard function on it
