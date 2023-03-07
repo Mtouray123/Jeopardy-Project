@@ -14,7 +14,7 @@ let isPlayer2 = false;
 let p1Score = 0;
 let p2Score = 0;
 const playerSpan = document.getElementById('player')
-// tenary statement to span score to HTML
+// ternary statement to span score to HTML
 playerSpan.innerText = isPlayer1 ? "player1" : "player2"
 // logic for a function to switch between players
 function teamSwitch() {
@@ -36,23 +36,22 @@ const jeopardyCats = [
       {
         // index id stored in every object for looping through
         id: 0,
-        question: "Where was Ghengis Khan Born",
-        correct: "Mongolia",
+        question: "After more than 150 years, he still remains the tallest US President ever",
+        correct: "Abraham Lincoln",
         level: "Beginner",
         score: 100
       },
       {
         id: 1,
-        question: "How old was Alexander the Great when he passed?",
-        correct: "32",
+        question: "In August 2005 this devastating storm became the costliest natural disaster in US history",
+        correct: "Hurricane Katrina",
         level: "Intermediate",
         score: 200
       },
       {
         id: 2,
-        question:
-          "What was the name of Mao Zedong's plan to industrialize China?",
-        correct: "Great Leap Forward",
+        question: "This ancient leader established the largest land empire in history",
+        correct: "Genghis Khan",
         level: "Advance",
         score: 300
       },
@@ -63,42 +62,42 @@ const jeopardyCats = [
     questionsArr: [
       {
         id: 3,
-        question: "Which is safer innerText or innerHTML?",
-        correct: "innerText",
+        question: "Used to store information to be referenced and manipulated in computer program",
+        correct: "Variable",
         level: "Beginner",
         score: 100
       },
       {
         id: 4,
         question:
-          "What is the name of the person who invented the language JavaScript?",
-        correct: "Brendan Eich",
+          "Cloud based service that helps developers store and manage their code",
+        correct: "GitHub",
         level: "Intermediate",
         score: 200
       },
       {
         id: 5,
-        question: "When was GitHub founded?",
-        correct: "2008",
+        question: "Mechanisms that enable two software components to communicate with each other using a set of definitions and protocols",
+        correct: "API",
         level: "Advance",
         score: 300
       },
     ],
   },
   {
-    genre: "Culture",
+    genre: "Pop Culture",
     questionsArr: [
       {
         id: 6,
-        question: "In what city was Michael Jackson born?",
-        correct: "Gary Indiana",
+        question: "Born in Gary Indiana, this mega star is widely regarded as the King of Pop",
+        correct: "Michael Jackson",
         level: "Beginner",
         score: 100
       },
       {
         id: 7,
-        question: "What year was 1984 published by George Orwell?",
-        correct: "1949",
+        question: "Seventh President of the United States and image printed on the twenty dollar bill",
+        correct: "Andrew Jackson",
         level: "Intermediate",
         score: 200
       },
@@ -116,22 +115,22 @@ const jeopardyCats = [
     questionsArr: [
       {
         id: 9,
-        question: "Name at least one main layer of the atmosphere.",
-        correct: "Troposphere",
+        question: "Made of layers of gases that surrounds a planet or celestial body.",
+        correct: "Atmosphere",
         level: "Beginner",
         score: 100
       },
       {
         id: 10,
-        question: "How many elements are in the periodic table?",
+        question: "The amount of elements are found within the periodic table?",
         correct: "118",
         level: "Intermediate",
         score: 200
       },
       {
         id: 11,
-        question: "How old is Earth? (According to 'science')",
-        correct: "4.5 billion years",
+        question: "Self-replicating material that is present in nearly all living organisms",
+        correct: "DNA",
         level: "Advance",
         score: 300
       },
@@ -148,6 +147,7 @@ function getQuestion(id) {
     }
   }
 }
+console.log(getQuestion)
 // function to loop through the jeopardy category
 function addCategory(category) {
   // created a new div and named it column to store the columns
@@ -180,6 +180,9 @@ function addCategory(category) {
     p2.appendChild(textDiv)
     let score = category.questionsArr[index].score
     card.setAttribute("data-id", question.id);
+    p1.setAttribute("data-id", question.id);
+    p2.setAttribute("data-id", question.id);
+    textDiv.setAttribute("data-id", question.id);
     // assigning numbers to back of cards
     // assigning innertext of p1 into the score
     p1.innerText = "$"+score
@@ -230,12 +233,15 @@ function answerQuestion(id) {
     alert('Answered Question Already')
     return;
   }
+  console.log(answerQuestion);
+
   // storing user's answer into a variable
   let answer = document.getElementById('answer-text').value
   console.log(answer);
   // getting the question and storing into variable
   let question = getQuestion(id);
   // getting correct answer from the answer object and storing into variable
+  console.log(id);
   let correctAnswer = question.correct
   // checking if user's answer equals the correct answer
   if (answer == correctAnswer) {
