@@ -6,7 +6,7 @@ let reset = document.getElementById("reset");
 // function to reset the buttons using the window scope
 reset.onclick = function () { resetBoard() };
 function resetBoard() {
-  let reset = window.location.reload()
+  window.location.reload()
 }
 // creating teams by adding boolean variable to players 
 let isPlayer1 = true;
